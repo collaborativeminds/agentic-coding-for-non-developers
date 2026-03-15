@@ -30,7 +30,37 @@ I resten av det här dokumentet betyder "öppna terminalen" att du startar Ghost
 
 ---
 
-## 2. Node.js
+## 2. Homebrew — pakethanterare för macOS
+
+Homebrew är en pakethanterare för macOS som gör det enkelt att installera och uppdatera utvecklingsverktyg direkt från terminalen. Istället för att leta upp och ladda ner installationsfiler från webbsidor kan du installera program med ett enda kommando. Flera av verktygen i den här guiden kan installeras via Homebrew, och många guider på nätet utgår från att du har det.
+
+### Vad används Homebrew till?
+
+Med Homebrew kan du till exempel köra `brew install <verktyg>` istället för att ladda ner <verktyg> manuellt. Det håller också dina installerade verktyg uppdaterade med kommandot `brew upgrade`.
+
+### Installera Homebrew
+
+Öppna terminalen och kör:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Följ instruktionerna på skärmen — du kan behöva ange ditt Mac-lösenord. Installationen tar några minuter.
+
+**Verifiera installationen:** Stäng terminalen, öppna den igen och kör:
+
+```
+brew --version
+```
+
+Du bör se ett versionsnummer (t.ex. `Homebrew 4.x.x`).
+
+> **Observera:** Homebrew är bara tillgängligt för macOS. Windows-användare använder istället `winget` (förinstallerat i Windows 10/11) för liknande funktionalitet.
+
+---
+
+## 3. Node.js
 
 Node.js är den plattform vi använder för att köra våra applikationer. TypeScript (språket vi skriver kod i) installeras i ett senare steg.
 
@@ -52,7 +82,7 @@ Du bör se ett versionsnummer (t.ex. `v24.x.x`).
 
 ---
 
-## 3. Docker Desktop
+## 4. Docker Desktop
 
 Docker låter oss köra applikationer i isolerade miljöer, så kallade containers. Vi använder det för att enkelt starta databaser och andra tjänster.
 
@@ -71,7 +101,7 @@ docker --version
 
 ---
 
-## 4. Kodeditor — Visual Studio Code eller Google Antigravity
+## 5. Kodeditor — Visual Studio Code eller Google Antigravity
 
 Du behöver en kodeditor för att kunna se och navigera i koden som Claude Code genererar. Välj **en** av följande:
 
@@ -87,7 +117,7 @@ Båda alternativen fungerar lika bra för den här kursen.
 
 ---
 
-## 5. Git
+## 6. Git
 
 Git är det verktyg som håller koll på alla ändringar i koden — tänk på det som en avancerad versionshistorik.
 
@@ -114,7 +144,7 @@ git config --global user.email "din.email@foretaget.se"
 
 ---
 
-## 6. GitHub Desktop och GitHub-konto
+## 7. GitHub Desktop och GitHub-konto
 
 GitHub är tjänsten där vi lagrar och samarbetar kring kod. GitHub Desktop ger dig ett grafiskt gränssnitt som gör det enklare att arbeta med Git.
 
@@ -136,29 +166,35 @@ GitHub CLI (`gh`) är ett kommandoradsverktyg som låter dig arbeta med GitHub d
 
 **macOS:**
 Om du har Homebrew installerat, öppna terminalen och kör:
+
 ```
 brew install gh
 ```
+
 Om du inte har Homebrew kan du ladda ner installationsfilen (.pkg) från [cli.github.com](https://cli.github.com/).
 
 **Windows:**
 Öppna terminalen och kör:
+
 ```
 winget install --id GitHub.cli
 ```
+
 Om kommandot inte fungerar kan du ladda ner installationsfilen (.msi) från [cli.github.com](https://cli.github.com/).
 
 ### Logga in med GitHub CLI
 
 När GitHub CLI är installerat, öppna terminalen (stäng och öppna den igen om den redan var öppen) och kör:
+
 ```
 gh auth login
 ```
+
 Välj **GitHub.com**, följ instruktionerna i terminalen, och logga in via webbläsaren när du ombeds. När inloggningen är klar bör du se ett bekräftelsemeddelande i terminalen.
 
 ---
 
-## 7. Claude Code
+## 8. Claude Code
 
 Claude Code finns i två delar: en **desktop-app** (för det grafiska gränssnittet) och ett **CLI-verktyg** (kommandoradsverktyget vi använder i terminalen för att bygga applikationer).
 
@@ -200,7 +236,7 @@ Fullständig installationsguide finns på [docs.anthropic.com/en/docs/claude-cod
 
 ---
 
-## 8. TypeScript (installeras via npm)
+## 9. TypeScript (installeras via npm)
 
 När Node.js är installerat (steg 2) kan du installera TypeScript. Öppna terminalen och kör:
 
@@ -216,10 +252,54 @@ tsc --version
 
 ---
 
+## 10. Ytterligare CLI-verktyg för fullstack-utveckling
+
+Dessa verktyg gör det möjligt för Claude Code att testa API:er, inspektera databaser, formatera kod och hantera konfigurationsfiler direkt från terminalen — utan att behöva byta kontext.
+
+### Installera via npm (macOS och Windows)
+
+| Verktyg      | Vad Claude Code använder det till                                                |
+| ------------ | -------------------------------------------------------------------------------- |
+| **prettier** | Formaterar genererad kod automatiskt till ett enhetligt stilformat               |
+| **eslint**   | Analyserar TypeScript/JavaScript-kod och flaggar fel mot projektets regler       |
+| **pm2**      | Startar och övervakar Node.js-processer; startar om dem automatiskt vid krascher |
+
+```
+npm install -g prettier eslint pm2
+```
+
+### Installera via Homebrew (macOS) / Winget (Windows)
+
+| Verktyg       | Vad Claude Code använder det till                                                          |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| **curl**      | Skickar HTTP-förfrågningar för att testa API:er och ladda ner resurser                     |
+| **mongosh**   | Kommandoradsskal för MongoDB — inspekterar och felsöker databasen direkt                   |
+| **psql**      | Motsvarigheten för PostgreSQL — kör SQL-frågor och granskar schema                         |
+| **git-delta** | Förbättrar git-diffar med syntaxfärgning, så kodändringar blir lättare att läsa            |
+| **jq**        | Bearbetar och filtrerar JSON-svar från API:er i terminalen                                 |
+| **yq**        | Som jq men för YAML — läser och skriver konfigurationsfiler som `docker-compose.yml`       |
+| **terraform** | Beskriver molninfrastruktur som kod; Claude Code kan generera och tillämpa konfigurationer |
+
+**macOS:**
+
+```
+brew install curl mongosh libpq git-delta jq yq terraform
+brew link --force libpq
+```
+
+**Windows:**
+
+```
+winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
+```
+
+---
+
 ## Checklista
 
 Öppna terminalen och kör följande kommandon, ett i taget. Se till att alla ger ett versionsnummer eller förväntat resultat:
 
+- [ ] `brew --version` visar ett versionsnummer (valfritt, macOS)
 - [ ] `node --version` visar ett versionsnummer
 - [ ] `docker --version` visar ett versionsnummer
 - [ ] VS Code eller Antigravity startar utan problem
@@ -234,4 +314,4 @@ tsc --version
 
 ## Behöver du hjälp?
 
-Om du stöter på problem med installationen, skicka ett mejl till [KURSLEDARENS E-POST] så hjälper vi dig innan kursdagen.
+Om du stöter på problem med installationen, skicka ett mejl till erik.hellman@collaborativeminds.se så hjälper vi dig innan kursdagen.

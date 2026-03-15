@@ -133,7 +133,7 @@ Download Git from [git-scm.com/downloads/win](https://git-scm.com/downloads/win)
 
 ### Configure Git with your name and email
 
-Once Git is installed, open the terminal and run the following two commands (replace with your own name and email address):
+Once Git is installed, open the terminal and run the following three commands (replace with your own name and email address):
 
 ```
 git config --global user.name "Your Name"
@@ -257,13 +257,13 @@ These tools allow Claude Code to test APIs, inspect databases, format code, and 
 
 ### Install via npm (macOS and Windows)
 
-| Tool               | What Claude Code uses it for                                                                       |
-| ------------------ | -------------------------------------------------------------------------------------------------- |
-| **prettier**       | Automatically formats generated code to a consistent style                                         |
-| **eslint**         | Analyzes TypeScript/JavaScript code and flags issues against the project's rules                   |
-| **pm2**            | Starts and monitors Node.js processes; automatically restarts them if they crash                   |
-| **playwright**     | Automates browsers for end-to-end testing — Claude Code can write and run UI tests                 |
-| **playwright-cli** | CLI interface for Playwright — inspects pages, records tests, and runs them from the terminal      |
+| Tool               | What Claude Code uses it for                                                                  |
+| ------------------ | --------------------------------------------------------------------------------------------- |
+| **prettier**       | Automatically formats generated code to a consistent style                                    |
+| **eslint**         | Analyzes TypeScript/JavaScript code and flags issues against the project's rules              |
+| **pm2**            | Starts and monitors Node.js processes; automatically restarts them if they crash              |
+| **playwright**     | Automates browsers for end-to-end testing — Claude Code can write and run UI tests            |
+| **playwright-cli** | CLI interface for Playwright — inspects pages, records tests, and runs them from the terminal |
 
 ```
 npm install -g prettier eslint pm2 playwright @playwright/test
@@ -271,15 +271,15 @@ npm install -g prettier eslint pm2 playwright @playwright/test
 
 ### Install via Homebrew (macOS) / Winget (Windows)
 
-| Tool          | What Claude Code uses it for                                                                  |
-| ------------- | --------------------------------------------------------------------------------------------- |
-| **curl**      | Sends HTTP requests to test APIs and download resources                                       |
-| **mongosh**   | Command-line shell for MongoDB — inspects and debugs the database directly                    |
-| **psql**      | The equivalent for PostgreSQL — runs SQL queries and inspects the schema                      |
-| **git-delta** | Enhances git diffs with syntax highlighting, making code changes easier to read               |
-| **jq**        | Processes and filters JSON responses from APIs in the terminal                                |
-| **yq**        | Like jq but for YAML — reads and writes configuration files like `docker-compose.yml`         |
-| **terraform** | Describes cloud infrastructure as code; Claude Code can generate and apply configurations     |
+| Tool          | What Claude Code uses it for                                                              |
+| ------------- | ----------------------------------------------------------------------------------------- |
+| **curl**      | Sends HTTP requests to test APIs and download resources                                   |
+| **mongosh**   | Command-line shell for MongoDB — inspects and debugs the database directly                |
+| **psql**      | The equivalent for PostgreSQL — runs SQL queries and inspects the schema                  |
+| **git-delta** | Enhances git diffs with syntax highlighting, making code changes easier to read           |
+| **jq**        | Processes and filters JSON responses from APIs in the terminal                            |
+| **yq**        | Like jq but for YAML — reads and writes configuration files like `docker-compose.yml`     |
+| **terraform** | Describes cloud infrastructure as code; Claude Code can generate and apply configurations |
 
 **macOS:**
 

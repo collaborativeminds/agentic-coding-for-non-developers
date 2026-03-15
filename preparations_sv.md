@@ -133,7 +133,7 @@ Ladda ner Git från [git-scm.com/downloads/win](https://git-scm.com/downloads/wi
 
 ### Konfigurera Git med ditt namn och e-post
 
-När Git är installerat, öppna terminalen och kör följande två kommandon (byt ut mot ditt namn och din e-postadress):
+När Git är installerat, öppna terminalen och kör följande tre kommandon (byt ut mot ditt namn och din e-postadress):
 
 ```
 git config --global user.name "Ditt Namn"

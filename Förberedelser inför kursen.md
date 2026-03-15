@@ -1,0 +1,237 @@
+# Förberedelser inför kursen — Agentic AI för icke-utvecklare
+
+Välkommen! Nedan hittar du allt du behöver installera och konfigurera på din dator innan kursdagen. Instruktionerna är uppdelade per verktyg, med separata steg för macOS och Windows där det behövs.
+
+Räkna med att hela förberedelsen tar ungefär 30–45 minuter.
+
+> **Viktigt:** Efter att du installerat ett nytt verktyg som ska köras i terminalen behöver du stänga och öppna terminalen igen innan kommandot blir tillgängligt. Detta beror på att terminalen behöver läsa in uppdaterade sökvägar (PATH) för att hitta det nya programmet.
+
+> **Tips: Använd en lösenordshanterare.** Under förberedelserna kommer du skapa konton hos flera olika tjänster (GitHub, Claude, Docker m.fl.). Vi rekommenderar starkt att du använder en lösenordshanterare för att hålla ordning på alla inloggningar och generera starka, unika lösenord. Några bra alternativ: [1Password](https://1password.com/), [Bitwarden](https://bitwarden.com/) (gratis-alternativ), eller [Proton Pass](https://proton.me/pass).
+
+---
+
+## 1. Terminal
+
+En terminal är programmet där du skriver kommandon för att styra din dator — till exempel för att installera verktyg, starta program, eller köra kod. Flera av stegen i den här guiden kräver att du kör kommandon i terminalen, och under kursen kommer vi använda den löpande.
+
+### macOS: Ghostty
+
+Vi rekommenderar **Ghostty** — en snabb och modern terminal. Ladda ner från [ghostty.org](https://ghostty.org/) och dra appen till din Applications-mapp.
+
+> **Tips:** macOS har en inbyggd terminal-app som heter "Terminal" (i Applications > Utilities). Den fungerar också, men Ghostty ger en bättre upplevelse.
+
+### Windows: Windows Terminal
+
+Vi rekommenderar **Windows Terminal** — Microsofts moderna terminal-app. Den är förinstallerad på Windows 11. Om du använder Windows 10, ladda ner den gratis från [Microsoft Store](https://apps.microsoft.com/detail/9n0dx20hk701).
+
+> **Tips:** Kör alltid kommandon i **Windows Terminal** (eller PowerShell), inte i den äldre "Kommandotolken" (cmd.exe).
+
+I resten av det här dokumentet betyder "öppna terminalen" att du startar Ghostty (macOS) eller Windows Terminal (Windows).
+
+---
+
+## 2. Node.js
+
+Node.js är den plattform vi använder för att köra våra applikationer. TypeScript (språket vi skriver kod i) installeras i ett senare steg.
+
+**macOS och Windows:**
+Gå till [nodejs.org/en/download](https://nodejs.org/en/download). Scrolla ner till sektionen **"Or get a prebuilt Node.js® for..."** och välj ditt operativsystem:
+
+- **macOS:** Välj **macOS** och klicka på **"macOS Installer (.pkg)"**
+- **Windows:** Välj **Windows** och klicka på **"Windows Installer (.msi)"**
+
+Välj den version som är markerad **LTS** (Long Term Support, för närvarande v24.14.0). De flesta moderna Apple-datorer kör ARM64-arkitektur, men om du har en äldre dator kan du behöva välja x64 istället. Kör installationsfilen och följ instruktionerna — standardinställningarna fungerar bra.
+
+**Verifiera installationen:** Öppna terminalen och kör:
+
+```
+node --version
+```
+
+Du bör se ett versionsnummer (t.ex. `v24.x.x`).
+
+---
+
+## 3. Docker Desktop
+
+Docker låter oss köra applikationer i isolerade miljöer, så kallade containers. Vi använder det för att enkelt starta databaser och andra tjänster.
+
+> **Windows-användare:** Docker Desktop kräver att WSL 2 (Windows Subsystem for Linux) är aktiverat. Installationsprogrammet hjälper dig med detta, men om du stöter på problem finns det instruktioner i Dockers officiella guide: [docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/)
+
+**macOS och Windows:**
+Ladda ner Docker Desktop från [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). Kör installationsfilen och följ instruktionerna.
+
+Du behöver skapa ett gratis Docker-konto om du inte redan har ett — det gör du på samma sida.
+
+**Verifiera installationen:** Öppna terminalen och kör:
+
+```
+docker --version
+```
+
+---
+
+## 4. Kodeditor — Visual Studio Code eller Google Antigravity
+
+Du behöver en kodeditor för att kunna se och navigera i koden som Claude Code genererar. Välj **en** av följande:
+
+### Alternativ A: Visual Studio Code (VS Code)
+
+Ladda ner från [code.visualstudio.com](https://code.visualstudio.com/). Välj rätt version för ditt operativsystem, kör installationsfilen och följ instruktionerna.
+
+### Alternativ B: Google Antigravity
+
+Ladda ner från [antigravity.google/download](https://antigravity.google/download). Välj rätt version för ditt operativsystem, kör installationsfilen och följ instruktionerna.
+
+Båda alternativen fungerar lika bra för den här kursen.
+
+---
+
+## 5. Git
+
+Git är det verktyg som håller koll på alla ändringar i koden — tänk på det som en avancerad versionshistorik.
+
+**macOS:**
+Öppna terminalen och kör:
+
+```
+git --version
+```
+
+Om Git inte redan är installerat kommer macOS att erbjuda dig att installera det automatiskt via Xcode Command Line Tools. Följ instruktionerna på skärmen.
+
+**Windows:**
+Ladda ner Git från [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Kör installationsfilen och använd standardinställningarna.
+
+### Konfigurera Git med ditt namn och e-post
+
+När Git är installerat, öppna terminalen och kör följande två kommandon (byt ut mot ditt namn och din e-postadress):
+
+```
+git config --global user.name "Ditt Namn"
+git config --global user.email "din.email@foretaget.se"
+```
+
+---
+
+## 6. GitHub Desktop och GitHub-konto
+
+GitHub är tjänsten där vi lagrar och samarbetar kring kod. GitHub Desktop ger dig ett grafiskt gränssnitt som gör det enklare att arbeta med Git.
+
+### Skapa ett GitHub-konto
+
+Om du inte redan har ett, gå till [github.com](https://github.com/) och skapa ett konto. Du behöver ett **Team-abonnemang** (från 4 USD/mån) — kontakta din chef eller IT-avdelning om du behöver hjälp med detta.
+
+### Installera GitHub Desktop
+
+Ladda ner från [desktop.github.com](https://desktop.github.com/download/). Kör installationsfilen och följ instruktionerna.
+
+### Logga in med GitHub Desktop
+
+När du startar GitHub Desktop för första gången klickar du på **"Sign in to GitHub.com"** och loggar in med ditt GitHub-konto. Detta kopplar ihop GitHub Desktop med ditt konto så att du kan hämta och skicka kod.
+
+### Installera GitHub CLI
+
+GitHub CLI (`gh`) är ett kommandoradsverktyg som låter dig arbeta med GitHub direkt från terminalen. Vi använder det under kursen för att bland annat skapa och hantera repositories.
+
+**macOS:**
+Om du har Homebrew installerat, öppna terminalen och kör:
+```
+brew install gh
+```
+Om du inte har Homebrew kan du ladda ner installationsfilen (.pkg) från [cli.github.com](https://cli.github.com/).
+
+**Windows:**
+Öppna terminalen och kör:
+```
+winget install --id GitHub.cli
+```
+Om kommandot inte fungerar kan du ladda ner installationsfilen (.msi) från [cli.github.com](https://cli.github.com/).
+
+### Logga in med GitHub CLI
+
+När GitHub CLI är installerat, öppna terminalen (stäng och öppna den igen om den redan var öppen) och kör:
+```
+gh auth login
+```
+Välj **GitHub.com**, följ instruktionerna i terminalen, och logga in via webbläsaren när du ombeds. När inloggningen är klar bör du se ett bekräftelsemeddelande i terminalen.
+
+---
+
+## 7. Claude Code
+
+Claude Code finns i två delar: en **desktop-app** (för det grafiska gränssnittet) och ett **CLI-verktyg** (kommandoradsverktyget vi använder i terminalen för att bygga applikationer).
+
+### Claude-konto
+
+Du behöver ett Claude-konto med minst **Pro-abonnemang** (från 20 USD/mån). Skapa ett konto eller uppgradera på [claude.ai](https://claude.ai/).
+
+### Claude Desktop-app
+
+Ladda ner från [claude.ai/download](https://claude.ai/download). Välj rätt version för ditt operativsystem, installera, och logga in med ditt Claude-konto.
+
+### Claude Code CLI
+
+**macOS:**
+Öppna terminalen och kör:
+
+```
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows:**
+Öppna terminalen och kör:
+
+```
+irm https://claude.ai/install.ps1 | iex
+```
+
+### Logga in med Claude Code CLI
+
+När installationen är klar, stäng terminalen och öppna den igen. Kör sedan:
+
+```
+claude
+```
+
+Första gången du kör kommandot kommer du att guidas genom en inloggning i webbläsaren. Följ instruktionerna för att koppla CLI-verktyget till ditt Claude-konto.
+
+Fullständig installationsguide finns på [docs.anthropic.com/en/docs/claude-code/setup](https://docs.anthropic.com/en/docs/claude-code/setup).
+
+---
+
+## 8. TypeScript (installeras via npm)
+
+När Node.js är installerat (steg 2) kan du installera TypeScript. Öppna terminalen och kör:
+
+```
+npm install -g typescript
+```
+
+**Verifiera installationen:** Kör följande i terminalen:
+
+```
+tsc --version
+```
+
+---
+
+## Checklista
+
+Öppna terminalen och kör följande kommandon, ett i taget. Se till att alla ger ett versionsnummer eller förväntat resultat:
+
+- [ ] `node --version` visar ett versionsnummer
+- [ ] `docker --version` visar ett versionsnummer
+- [ ] VS Code eller Antigravity startar utan problem
+- [ ] `git --version` visar ett versionsnummer
+- [ ] GitHub Desktop är installerat och inloggat mot ditt GitHub-konto
+- [ ] `gh auth status` visar att du är inloggad
+- [ ] Claude Desktop-app är installerad och inloggad
+- [ ] `claude` startar i terminalen och är kopplat till ditt konto
+- [ ] `tsc --version` visar ett versionsnummer
+
+---
+
+## Behöver du hjälp?
+
+Om du stöter på problem med installationen, skicka ett mejl till [KURSLEDARENS E-POST] så hjälper vi dig innan kursdagen.

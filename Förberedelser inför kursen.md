@@ -140,6 +140,7 @@ När Git är installerat, öppna terminalen och kör följande två kommandon (b
 ```
 git config --global user.name "Ditt Namn"
 git config --global user.email "din.email@foretaget.se"
+git config --global push.autoSetupRemote true
 ```
 
 ---

@@ -1,10 +1,5 @@
 # Agentic AI för icke-utvecklare
 
-**Datum:** 30 mars 2026, 09:00–17:00
-**Plats:** Kairos Future, Klarabergshuset, Västra Järnvägsgatan 3, Stockholm
-**Kostnad:** 4 995 SEK (exkl. moms)
-**Inkluderat:** Kursmaterial, fika och lunch
-
 ---
 
 ## Om kursen
@@ -93,13 +88,3 @@ Inför kursen kommer du att få ett utskick med instruktioner. Du behöver ha f�
 - Installationer av nödvändiga applikationer (instruktioner skickas ut för både Windows och macOS)
 
 Under kursen finns även ett valfritt moment där vi publicerar applikationen i molnet. Detta kan medföra en mindre kostnad, men är inget du behöver förbereda i förväg.
-
----
-
-## Praktisk information
-
-- Kursen erbjuds enbart till företag och deras anställda, ej privatpersoner
-- Sista anmälningsdag: **15 mars 2026**
-- Minst 20 deltagare krävs för att kursen ska genomföras
-- Max 40 deltagare
-- Anmälan är bindande

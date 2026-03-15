@@ -257,12 +257,12 @@ Dessa verktyg gör det möjligt för Claude Code att testa API:er, inspektera da
 
 ### Installera via npm (macOS och Windows)
 
-| Verktyg      | Vad Claude Code använder det till                                                |
-| ------------ | -------------------------------------------------------------------------------- |
-| **prettier**      | Formaterar genererad kod automatiskt till ett enhetligt stilformat                            |
-| **eslint**        | Analyserar TypeScript/JavaScript-kod och flaggar fel mot projektets regler                    |
-| **pm2**           | Startar och övervakar Node.js-processer; startar om dem automatiskt vid krascher              |
-| **playwright**    | Automatiserar webbläsare för end-to-end-testning — Claude Code kan skriva och köra UI-tester  |
+| Verktyg            | Vad Claude Code använder det till                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------- |
+| **prettier**       | Formaterar genererad kod automatiskt till ett enhetligt stilformat                              |
+| **eslint**         | Analyserar TypeScript/JavaScript-kod och flaggar fel mot projektets regler                      |
+| **pm2**            | Startar och övervakar Node.js-processer; startar om dem automatiskt vid krascher                |
+| **playwright**     | Automatiserar webbläsare för end-to-end-testning — Claude Code kan skriva och köra UI-tester    |
 | **playwright-cli** | CLI-gränssnitt för Playwright — inspekterar sidor, spelar in tester och kör dem från terminalen |
 
 ```
@@ -273,6 +273,7 @@ npm install -g prettier eslint pm2 playwright @playwright/test
 
 | Verktyg       | Vad Claude Code använder det till                                                          |
 | ------------- | ------------------------------------------------------------------------------------------ |
+| **python**    | Kör Python-skript och används av många CLI-verktyg som ett beroende                        |
 | **curl**      | Skickar HTTP-förfrågningar för att testa API:er och ladda ner resurser                     |
 | **mongosh**   | Kommandoradsskal för MongoDB — inspekterar och felsöker databasen direkt                   |
 | **psql**      | Motsvarigheten för PostgreSQL — kör SQL-frågor och granskar schema                         |
@@ -284,15 +285,25 @@ npm install -g prettier eslint pm2 playwright @playwright/test
 **macOS:**
 
 ```
-brew install curl mongosh libpq git-delta jq yq terraform
+brew install python curl mongosh libpq git-delta jq yq terraform
 brew link --force libpq
 ```
 
 **Windows:**
 
 ```
-winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
+winget install Python.Python.3 cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
 ```
+
+**Verifiera Python-installationen:** Stäng terminalen, öppna den igen och kör:
+
+```
+python3 --version
+```
+
+Du bör se ett versionsnummer (t.ex. `Python 3.x.x`).
+
+> **Observera:** På Windows kan kommandot heta `python` istället för `python3`.
 
 ---
 
@@ -310,6 +321,7 @@ winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jq
 - [ ] Claude Desktop-app är installerad och inloggad
 - [ ] `claude` startar i terminalen och är kopplat till ditt konto
 - [ ] `tsc --version` visar ett versionsnummer
+- [ ] `python3 --version` visar ett versionsnummer
 
 ---
 

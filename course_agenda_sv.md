@@ -1,5 +1,7 @@
 # Agentic AI för icke-utvecklare
 
+[English version](course_agenda_en.md)
+
 ---
 
 ## Om kursen
@@ -80,6 +82,8 @@ Dagens avslutande pass där du sätter allt i praktik. Med hjälp av Claude Code
 ---
 
 ## Förberedelser
+
+Detaljerade installationsinstruktioner finns i [förberedelsedokumentet](preparations_sv.md).
 
 Inför kursen kommer du att få ett utskick med instruktioner. Du behöver ha följande på plats:
 

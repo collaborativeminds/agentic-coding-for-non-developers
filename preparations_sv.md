@@ -2,7 +2,7 @@
 
 Välkommen! Nedan hittar du allt du behöver installera och konfigurera på din dator innan kursdagen. Instruktionerna är uppdelade per verktyg, med separata steg för macOS och Windows där det behövs.
 
-Räkna med att hela förberedelsen tar ungefär 30–45 minuter.
+Räkna med att hela förberedelsen tar ungefär 60–90 minuter. Stegen som tar mest tid är Docker Desktop (nedladdning och konto-skapande), GitHub-konfigurationen och Claude Code-inloggningen.
 
 > **Viktigt:** Efter att du installerat ett nytt verktyg som ska köras i terminalen behöver du stänga och öppna terminalen igen innan kommandot blir tillgängligt. Detta beror på att terminalen behöver läsa in uppdaterade sökvägar (PATH) för att hitta det nya programmet.
 
@@ -125,10 +125,8 @@ Git är det verktyg som håller koll på alla ändringar i koden — tänk på d
 Öppna terminalen och kör:
 
 ```
-git --version
+brew install git
 ```
-
-Om Git inte redan är installerat kommer macOS att erbjuda dig att installera det automatiskt via Xcode Command Line Tools. Följ instruktionerna på skärmen.
 
 **Windows:**
 Ladda ner Git från [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Kör installationsfilen och använd standardinställningarna.
@@ -261,12 +259,14 @@ Dessa verktyg gör det möjligt för Claude Code att testa API:er, inspektera da
 
 | Verktyg      | Vad Claude Code använder det till                                                |
 | ------------ | -------------------------------------------------------------------------------- |
-| **prettier** | Formaterar genererad kod automatiskt till ett enhetligt stilformat               |
-| **eslint**   | Analyserar TypeScript/JavaScript-kod och flaggar fel mot projektets regler       |
-| **pm2**      | Startar och övervakar Node.js-processer; startar om dem automatiskt vid krascher |
+| **prettier**      | Formaterar genererad kod automatiskt till ett enhetligt stilformat                            |
+| **eslint**        | Analyserar TypeScript/JavaScript-kod och flaggar fel mot projektets regler                    |
+| **pm2**           | Startar och övervakar Node.js-processer; startar om dem automatiskt vid krascher              |
+| **playwright**    | Automatiserar webbläsare för end-to-end-testning — Claude Code kan skriva och köra UI-tester  |
+| **playwright-cli** | CLI-gränssnitt för Playwright — inspekterar sidor, spelar in tester och kör dem från terminalen |
 
 ```
-npm install -g prettier eslint pm2
+npm install -g prettier eslint pm2 playwright @playwright/test
 ```
 
 ### Installera via Homebrew (macOS) / Winget (Windows)

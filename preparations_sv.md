@@ -217,7 +217,7 @@ Om du inte har Homebrew kan du ladda ner installationsfilen (.pkg) från [cli.gi
 Öppna terminalen och kör:
 
 ```
-winget install --id GitHub.cli
+winget install GitHub.cli
 ```
 
 Om kommandot inte fungerar kan du ladda ner installationsfilen (.msi) från [cli.github.com](https://cli.github.com/).

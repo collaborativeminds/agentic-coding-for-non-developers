@@ -12,7 +12,7 @@ Expect the full preparation to take approximately 60–90 minutes. The most time
 
 ## 1. Terminal
 
-A terminal is the program where you type commands to control your computer — for example to install tools, start programs, or run code. Several steps in this guide require running commands in the terminal, and we'll be using it throughout the course.
+A terminal is the program where you type commands to control your computer — for example to install tools, start programs, or run code. Several steps in this guide require running commands in the terminal, and we'll be using it throughout the course. Inside a terminal a shell is running. For an analogy with chatGPT, consider the terminal to be a chat window where you type and the shell to be the thing that interprets your commands.
 
 ### macOS: Ghostty
 
@@ -22,23 +22,29 @@ We recommend **Ghostty** — a fast and modern terminal. Download it from [ghost
 
 ### Windows: Windows Terminal
 
-We recommend **Windows Terminal** — Microsoft's modern terminal app. It comes pre-installed on Windows 11. If you're on Windows 10, download it for free from the [Microsoft Store](https://apps.microsoft.com/detail/9n0dx20hk701).
+We recommend **Windows Terminal** — Microsoft's modern terminal app. It comes pre-installed on Windows 11. If you're on Windows 10, download it for free from the [Microsoft Store](https://apps.microsoft.com/detail/9n0dx20hk701). The default terminal on Windows 10, Windows Console Host, does not allow for tabs etc.
 
-> **Tip:** Always run commands in **Windows Terminal** (or PowerShell), not in the older "Command Prompt" (cmd.exe).
+Powershell is the default shell running in windows terminal, so when you start up terminal, you will see "Powershell".
+
+> **Tip:** Always run commands in **Windows Terminal**, not in the older "Command Prompt" (cmd.exe).
 
 Throughout the rest of this document, "open the terminal" means launching Ghostty (macOS) or Windows Terminal (Windows).
 
 ---
 
-## 2. Homebrew — Package Manager for macOS
+## 2. Package Manager
 
-Homebrew is a package manager for macOS that makes it easy to install and update development tools directly from the terminal. Instead of hunting down and downloading installer files from websites, you can install programs with a single command. Several tools in this guide can be installed via Homebrew, and many online guides assume you have it.
+Package managers make it easy to install and update development tools directly from the terminal. Instead of hunting down and downloading installer files from websites, you can install programs with a single command.
 
-### What is Homebrew used for?
+### macOS Package Manager — Homebrew
+
+Several tools in this guide can be installed via Homebrew, and many online guides assume you have it.
+
+#### What is Homebrew used for?
 
 With Homebrew, you can run `brew install <tool>` instead of downloading `<tool>` manually. It also keeps your installed tools up to date with the `brew upgrade` command.
 
-### Install Homebrew
+#### Install Homebrew
 
 Open the terminal and run:
 
@@ -56,7 +62,19 @@ brew --version
 
 You should see a version number (e.g. `Homebrew 4.x.x`).
 
-> **Note:** Homebrew is only available for macOS. Windows users should use `winget` (pre-installed on Windows 10/11) for similar functionality.
+### Windows Package Manager — winget
+
+#### What is winget used for?
+
+With winget, you can `run winget install <tool>` instead of downloading <tool> manually from a website. It also makes it easy to keep your tools up to date with the `winget upgrade` command.
+
+#### Install winget 
+
+Note: Windows Package Manager is included with modern versions of Windows 10 and Windows 11. If it is not available on your system, install or update the App Installer app from the Microsoft Store.
+
+Open Windows Terminal and type `winget -v` to verify that it is installed.
+
+You should see a version number (e.g. v1.x.x).
 
 ---
 
@@ -78,26 +96,53 @@ Choose the version marked **LTS** (Long Term Support, currently v24.14.0). Most 
 node --version
 ```
 
-You should see a version number (e.g. `v24.x.x`).
+You should see a version number (e.g. `v24.x.x`). Likewise, run 
+
+```
+npm --version
+```
+
+You should see a version number (e.g. `v11.x.x`).
+
+**Windows:** 
+
+If you see `npm : File ... cannot be loaded because running scripts is disabled on this system`, then run
+
+```
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Start a new terminal and try again. Now it should work.
 
 ---
 
 ## 4. Docker Desktop
 
-Docker lets us run applications in isolated environments called containers. We use it to easily start databases and other services.
+Docker lets us run applications in isolated environments called containers. We use it to easily start databases and other services. A free Docker account may be needed if you want to upload to Docker Hub or other cloud features, but it is not required to run containers locally.
 
-> **Windows users:** Docker Desktop requires WSL 2 (Windows Subsystem for Linux) to be enabled. The installer will help you with this, but if you run into issues there are instructions in Docker's official guide: [docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/)
-
-**macOS and Windows:**
+**macOS:**
 Download Docker Desktop from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). Run the installer and follow the instructions.
 
-You'll need to create a free Docker account if you don't already have one — you can do this on the same page.
+**Windows:**
+Download Docker Desktop from [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). For Windows there are two options: AMD64 or ARM64. ARM64 is uncommon. You can open the terminal and type `$env:PROCESSOR_ARCHITECTURE` to see which one you have. Docker Desktop requires WSL 2 (Windows Subsystem for Linux) to be enabled. The installer will help you with this, but if you run into issues there are instructions in Docker's official guide: [docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/). Run the installer and follow the instructions. The default options are fine.
+
 
 **Verify the installation:** Open the terminal and run:
 
 ```
 docker --version
 ```
+
+You should see a version number (e.g. `v29.x.x`).
+
+When you open Docker Desktop, you can choose to enter your email address, but you can just as well skip that step. 
+
+**Windows:**
+You may also be prompted to update your wsl. Do that.
+
+You may also get the following error: `Docker Desktop failed to start because virtualisation support wasn't detected. Sign in to try restoring access to Docker features.`
+This happens when virtualization has not been enabled. `Ctrl + Shift + Esc → Performance → CPU`, then look for `Virtualization`. If `disabled` then you can enable it
+either by following the suggestion to enable or by enabling in the BIOS (use chatGPT for instructions).
 
 ---
 
@@ -122,14 +167,14 @@ Both options work equally well for this course.
 Git is the tool that tracks all changes to the code — think of it as an advanced version history.
 
 **macOS:**
-Open the terminal and run:
-
-```
-brew install git
-```
+Open the terminal and run `brew install git`
 
 **Windows:**
-Download Git from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Run the installer and use the default settings.
+*Alternative 1:* Download Git from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Run the installer and use the default settings.
+
+*Alternative 2:* Open the terminal and run `winget install Git.Git`. 
+
+After installation, open a new terminal and verify by typing `git`.
 
 ### Configure Git with your name and email
 
@@ -143,9 +188,9 @@ git config --global push.autoSetupRemote true
 
 ---
 
-## 7. GitHub Desktop and GitHub Account
+## 7. GitHub Desktop, GitHub Account and GitHub CLI
 
-GitHub is the service where we store and collaborate on code. GitHub Desktop gives you a graphical interface that makes working with Git easier.
+GitHub is the service where we store and collaborate on code. GitHub Desktop gives you a graphical interface that makes working with Git easier. You can also use Git in VS Code / Google Antigravity or type commands directly in the terminal.
 
 ### Create a GitHub Account
 
@@ -155,7 +200,7 @@ If you don't already have one, go to [github.com](https://github.com/) and creat
 
 Download from [desktop.github.com](https://desktop.github.com/download/). Run the installer and follow the instructions.
 
-### Sign in with GitHub Desktop
+#### Sign in with GitHub Desktop
 
 When you launch GitHub Desktop for the first time, click **"Sign in to GitHub.com"** and log in with your GitHub account. This connects GitHub Desktop to your account so you can push and pull code.
 
@@ -181,7 +226,7 @@ winget install --id GitHub.cli
 
 If the command doesn't work, you can download the installer (.msi) from [cli.github.com](https://cli.github.com/).
 
-### Sign in with GitHub CLI
+#### Sign in with GitHub CLI
 
 Once GitHub CLI is installed, open the terminal (close and reopen it if it was already open) and run:
 
@@ -221,7 +266,9 @@ Open the terminal and run:
 irm https://claude.ai/install.ps1 | iex
 ```
 
-### Sign in with Claude Code CLI
+NOTE: There might be setup notes that say that you need to add claude to the path. If so, follow the instructions in "setup notes" to do so.
+
+#### Sign in with Claude Code CLI
 
 Once the installation is complete, close the terminal and reopen it. Then run:
 
@@ -273,6 +320,7 @@ npm install -g prettier eslint pm2 playwright @playwright/test
 
 | Tool          | What Claude Code uses it for                                                              |
 | ------------- | ----------------------------------------------------------------------------------------- |
+| **python**    | Runs Python scripts and is used by many CLI tools as a dependency                         |
 | **curl**      | Sends HTTP requests to test APIs and download resources                                   |
 | **mongosh**   | Command-line shell for MongoDB — inspects and debugs the database directly                |
 | **psql**      | The equivalent for PostgreSQL — runs SQL queries and inspects the schema                  |
@@ -284,15 +332,26 @@ npm install -g prettier eslint pm2 playwright @playwright/test
 **macOS:**
 
 ```
-brew install curl mongosh libpq git-delta jq yq terraform
+brew install python curl mongosh libpq git-delta jq yq terraform
 brew link --force libpq
 ```
 
 **Windows:**
 
 ```
-winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
+winget source update
+winget install Python.Python.3.14 cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL.17 dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
 ```
+
+**Verify the Python installation:** Close the terminal, reopen it, and run:
+
+```
+python3 --version
+```
+
+You should see a version number (e.g. `Python 3.x.x`).
+
+> **Note:** On Windows, the command may be `python` instead of `python3`.
 
 ---
 
@@ -300,8 +359,9 @@ winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jq
 
 Open the terminal and run the following commands, one at a time. Make sure all of them return a version number or expected output:
 
-- [ ] `brew --version` shows a version number (optional, macOS only)
+- [ ] `brew --version` / `winget --version` shows a version number (optional)
 - [ ] `node --version` shows a version number
+- [ ] `npm --version` shows a version number
 - [ ] `docker --version` shows a version number
 - [ ] VS Code or Antigravity launches without issues
 - [ ] `git --version` shows a version number
@@ -310,6 +370,7 @@ Open the terminal and run the following commands, one at a time. Make sure all o
 - [ ] Claude Desktop app is installed and signed in
 - [ ] `claude` starts in the terminal and is connected to your account
 - [ ] `tsc --version` shows a version number
+- [ ] `python3 --version` shows a version number
 
 ---
 

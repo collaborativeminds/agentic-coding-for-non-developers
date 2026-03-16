@@ -12,7 +12,7 @@ Räkna med att hela förberedelsen tar ungefär 60–90 minuter. Stegen som tar 
 
 ## 1. Terminal
 
-En terminal är programmet där du skriver kommandon för att styra din dator — till exempel för att installera verktyg, starta program, eller köra kod. Flera av stegen i den här guiden kräver att du kör kommandon i terminalen, och under kursen kommer vi använda den löpande.
+En terminal är programmet där du skriver kommandon för att styra din dator — till exempel för att installera verktyg, starta program, eller köra kod. Flera av stegen i den här guiden kräver att du kör kommandon i terminalen, och under kursen kommer vi använda den löpande. Inuti en terminal körs ett shell. Som en analogi till ChatGPT kan man tänka sig att terminalen är som ett chattfönster där du skriver, och shellet är det som tolkar dina kommandon.
 
 ### macOS: Ghostty
 
@@ -22,23 +22,29 @@ Vi rekommenderar **Ghostty** — en snabb och modern terminal. Ladda ner från [
 
 ### Windows: Windows Terminal
 
-Vi rekommenderar **Windows Terminal** — Microsofts moderna terminal-app. Den är förinstallerad på Windows 11. Om du använder Windows 10, ladda ner den gratis från [Microsoft Store](https://apps.microsoft.com/detail/9n0dx20hk701).
+Vi rekommenderar **Windows Terminal** — Microsofts moderna terminal-app. Den är förinstallerad på Windows 11. Om du använder Windows 10, ladda ner den gratis från [Microsoft Store](https://apps.microsoft.com/detail/9n0dx20hk701). Defaultterminalen på Windows 10, Windows Console Host, tillåter inte flikar, etc.
 
-> **Tips:** Kör alltid kommandon i **Windows Terminal** (eller PowerShell), inte i den äldre "Kommandotolken" (cmd.exe).
+PowerShell är det standardshell som körs i Windows Terminal, så när du startar terminalen kommer du att se "PowerShell".
+
+> **Tips:** Kör alltid kommandon i **Windows Terminal**, inte i den äldre "Kommandotolken" (cmd.exe).
 
 I resten av det här dokumentet betyder "öppna terminalen" att du startar Ghostty (macOS) eller Windows Terminal (Windows).
 
 ---
 
-## 2. Homebrew — pakethanterare för macOS
+## 2. Pakethanterare
 
-Homebrew är en pakethanterare för macOS som gör det enkelt att installera och uppdatera utvecklingsverktyg direkt från terminalen. Istället för att leta upp och ladda ner installationsfiler från webbsidor kan du installera program med ett enda kommando. Flera av verktygen i den här guiden kan installeras via Homebrew, och många guider på nätet utgår från att du har det.
+Pakethanterare gör det enkelt att installera och uppdatera utvecklingsverktyg och andra program direkt från terminalen. Istället för att leta upp och ladda ner installationsfiler från webbsidor kan du installera program med ett enda kommando. 
 
-### Vad används Homebrew till?
+### Homebrew — pakethanterare för macOS
+
+Flera av verktygen i den här guiden kan installeras via Homebrew, och många guider på nätet utgår från att du har det.
+
+#### Vad används Homebrew till?
 
 Med Homebrew kan du till exempel köra `brew install <verktyg>` istället för att ladda ner <verktyg> manuellt. Det håller också dina installerade verktyg uppdaterade med kommandot `brew upgrade`.
 
-### Installera Homebrew
+#### Installera Homebrew
 
 Öppna terminalen och kör:
 
@@ -56,7 +62,19 @@ brew --version
 
 Du bör se ett versionsnummer (t.ex. `Homebrew 4.x.x`).
 
-> **Observera:** Homebrew är bara tillgängligt för macOS. Windows-användare använder istället `winget` (förinstallerat i Windows 10/11) för liknande funktionalitet.
+### Windows Package Manager — winget
+
+#### Vad används winget till?
+
+Med winget kan du köra `winget install <verktyg>` i stället för att ladda ner <verktyg> manuellt från en webbplats. Det gör det också enkelt att hålla dina verktyg uppdaterade med kommandot `winget upgrade`.
+
+#### Installera winget
+
+Obs: Windows Package Manager ingår i moderna versioner av Windows 10 och Windows 11. Om det inte finns på ditt system kan du installera eller uppdatera appen App Installer från Microsoft Store.
+
+Öppna Windows Terminal och skriv `winget -v` för att kontrollera att det är installerat.
+
+Du bör se ett versionsnummer (t.ex. v1.x.x).
 
 ---
 
@@ -78,26 +96,49 @@ Välj den version som är markerad **LTS** (Long Term Support, för närvarande 
 node --version
 ```
 
-Du bör se ett versionsnummer (t.ex. `v24.x.x`).
+Du bör se ett versionsnummer (t.ex. `v24.x.x`). Likaså, kör
 
+```
+npm --version
+```
+
+Du bör se ett versionsnummer (t.ex. `v11.x.x`).
+
+**Windows:** 
+
+Om du ser `npm : File ... cannot be loaded because running scripts is disabled on this system`, kör då
+
+```
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+Starta en ny terminal och försök igen. Nu bör det fungera.
 ---
 
 ## 4. Docker Desktop
 
-Docker låter oss köra applikationer i isolerade miljöer, så kallade containers. Vi använder det för att enkelt starta databaser och andra tjänster.
+Docker låter oss köra applikationer i isolerade miljöer, så kallade containers. Vi använder det för att enkelt starta databaser och andra tjänster. Ett gratis Docker-konto kan behövas om du vill ladda upp till Docker Hub eller andra molnfunktioner, men det krävs inte för att köra containers lokalt.
 
-> **Windows-användare:** Docker Desktop kräver att WSL 2 (Windows Subsystem for Linux) är aktiverat. Installationsprogrammet hjälper dig med detta, men om du stöter på problem finns det instruktioner i Dockers officiella guide: [docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/)
-
-**macOS och Windows:**
+**macOS:**
 Ladda ner Docker Desktop från [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). Kör installationsfilen och följ instruktionerna.
 
-Du behöver skapa ett gratis Docker-konto om du inte redan har ett — det gör du på samma sida.
+**Windows:**
+Ladda ner Docker Desktop från [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/). För Windows finns två alternativ, AMD64 or ARM64. ARM64 är ovanligt. Du kan öppna terminalen och skriva `$env:PROCESSOR_ARCHITECTURE` för att se vilken du har. Docker Desktop kräver att WSL 2 (Windows Subsystem for Linux) är aktiverat. Installationsprogrammet hjälper dig med detta, men om du stöter på problem finns det instruktioner i Dockers officiella guide: [docs.docker.com/desktop/setup/install/windows-install](https://docs.docker.com/desktop/setup/install/windows-install/). Kör installationsfilen och följ instruktionerna. Defaultvalen går bra.
 
 **Verifiera installationen:** Öppna terminalen och kör:
 
 ```
 docker --version
 ```
+
+Du bör se ett versionsnummer (t.ex. `v29.x.x`).
+
+När du öppnar upp Docker Desktop kan du välja att fylla i din epostadress, men det går lika bra att hoppa över det steget.
+
+**Windows:**
+Du kan också bli tillfrågad att uppdatera din wsl. Gör så.
+
+Du kan också komma att få följande felmeddelande: `Docker Desktop failed to start because virtualisation support wasn't detected. Sign in to try restoring access to Docker features.`. Detta händer när virtualisering inte är aktiverad. Tryck `Ctrl + Shift + Esc → Prestanda → CPU`, och leta efter `Virtualization`. Om det står `disabled` kan du aktivera det antingen genom att följa förslaget att aktivera det, eller genom att aktivera det i BIOS (använd ChatGPT för instruktioner).
 
 ---
 
@@ -122,14 +163,14 @@ Båda alternativen fungerar lika bra för den här kursen.
 Git är det verktyg som håller koll på alla ändringar i koden — tänk på det som en avancerad versionshistorik.
 
 **macOS:**
-Öppna terminalen och kör:
-
-```
-brew install git
-```
+Öppna terminalen och kör `brew install git`
 
 **Windows:**
-Ladda ner Git från [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Kör installationsfilen och använd standardinställningarna.
+*Alternativ 1:* Ladda ner Git från [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Kör installationsfilen och använd standardinställningarna.
+
+*Alternativ 2:* Öppna terminalen och kör `winget install git`
+
+Efter installationen är klar, öppna en ny terminal och verifiera genom att skriva `git`.
 
 ### Konfigurera Git med ditt namn och e-post
 
@@ -143,9 +184,9 @@ git config --global push.autoSetupRemote true
 
 ---
 
-## 7. GitHub Desktop och GitHub-konto
+## 7. GitHub Desktop, GitHub-konto och GitHub-CLI
 
-GitHub är tjänsten där vi lagrar och samarbetar kring kod. GitHub Desktop ger dig ett grafiskt gränssnitt som gör det enklare att arbeta med Git.
+GitHub är tjänsten där vi lagrar och samarbetar kring kod. GitHub Desktop ger dig ett grafiskt gränssnitt som gör det enklare att arbeta med Git. Du kan också använda Git i VS Code / Google Antigravity eller skriva kommandon direkt i terminalen.
 
 ### Skapa ett GitHub-konto
 
@@ -155,7 +196,7 @@ Om du inte redan har ett, gå till [github.com](https://github.com/) och skapa e
 
 Ladda ner från [desktop.github.com](https://desktop.github.com/download/). Kör installationsfilen och följ instruktionerna.
 
-### Logga in med GitHub Desktop
+#### Logga in med GitHub Desktop
 
 När du startar GitHub Desktop för första gången klickar du på **"Sign in to GitHub.com"** och loggar in med ditt GitHub-konto. Detta kopplar ihop GitHub Desktop med ditt konto så att du kan hämta och skicka kod.
 
@@ -181,7 +222,7 @@ winget install --id GitHub.cli
 
 Om kommandot inte fungerar kan du ladda ner installationsfilen (.msi) från [cli.github.com](https://cli.github.com/).
 
-### Logga in med GitHub CLI
+#### Logga in med GitHub CLI
 
 När GitHub CLI är installerat, öppna terminalen (stäng och öppna den igen om den redan var öppen) och kör:
 
@@ -221,7 +262,9 @@ curl -fsSL https://claude.ai/install.sh | bash
 irm https://claude.ai/install.ps1 | iex
 ```
 
-### Logga in med Claude Code CLI
+OBS: Det kan finnas "setup notes" som säger att du måste lägga till claude till sökvägen (path). Isåfall, följ instruktionerna i "setup notes" för att göra det.
+
+#### Logga in med Claude Code CLI
 
 När installationen är klar, stäng terminalen och öppna den igen. Kör sedan:
 
@@ -292,7 +335,8 @@ brew link --force libpq
 **Windows:**
 
 ```
-winget install Python.Python.3 cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
+winget source update
+winget install Python.Python.3.14 cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL.17 dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
 ```
 
 **Verifiera Python-installationen:** Stäng terminalen, öppna den igen och kör:
@@ -311,8 +355,9 @@ Du bör se ett versionsnummer (t.ex. `Python 3.x.x`).
 
 Öppna terminalen och kör följande kommandon, ett i taget. Se till att alla ger ett versionsnummer eller förväntat resultat:
 
-- [ ] `brew --version` visar ett versionsnummer (valfritt, macOS)
+- [ ] `brew --version` / `winget --version` visar ett versionsnummer (valfritt)
 - [ ] `node --version` visar ett versionsnummer
+- [ ] `npm --version` visar ett versionsnummer
 - [ ] `docker --version` visar ett versionsnummer
 - [ ] VS Code eller Antigravity startar utan problem
 - [ ] `git --version` visar ett versionsnummer

@@ -6,6 +6,21 @@ Expect the full preparation to take approximately 60–90 minutes. The most time
 
 > **Important:** After installing a new tool that runs in the terminal, you need to close and reopen the terminal before the command becomes available. This is because the terminal needs to reload the updated paths (PATH) to find the new program.
 
+> **System requirements:** Make sure your computer meets the minimum requirements below before you begin the installations.
+
+### Computer and operating system
+
+- **macOS:** We recommend a Mac with an Apple Silicon processor (M1, M2, M3, M4, or M5) and the latest version of macOS (macOS 26).
+- **Windows:** We recommend Windows 11. Windows 10 may work, but we cannot guarantee that all tools will function correctly.
+
+### Web browser
+
+We recommend having [Google Chrome](https://www.google.com/chrome/) installed, as Claude Code has ready-made plugins for it. Other browsers may work, but during the course we will be using Chrome.
+
+### Local administrator
+
+You must be a **local administrator** on your computer to be able to install all the required tools. Contact your IT department well in advance if you don't have administrator privileges.
+
 > **Tip: Use a password manager.** During the preparations, you'll be creating accounts with several different services (GitHub, Claude, Docker, etc.). We strongly recommend using a password manager to keep track of all your logins and generate strong, unique passwords. Some good options: [1Password](https://1password.com/), [Bitwarden](https://bitwarden.com/) (free option), or [Proton Pass](https://proton.me/pass).
 
 ---
@@ -129,7 +144,11 @@ brew install git
 ```
 
 **Windows:**
-Download Git from [git-scm.com/downloads/win](https://git-scm.com/downloads/win). Run the installer and use the default settings.
+Open the terminal and run:
+
+```
+winget install --id Git.Git
+```
 
 ### Configure Git with your name and email
 
@@ -143,21 +162,13 @@ git config --global push.autoSetupRemote true
 
 ---
 
-## 7. GitHub Desktop and GitHub Account
+## 7. GitHub Account and GitHub CLI
 
-GitHub is the service where we store and collaborate on code. GitHub Desktop gives you a graphical interface that makes working with Git easier.
+GitHub is the service where we store and collaborate on code.
 
 ### Create a GitHub Account
 
 If you don't already have one, go to [github.com](https://github.com/) and create an account. You'll need a **Team subscription** (from $4/month) — contact your manager or IT department if you need help with this.
-
-### Install GitHub Desktop
-
-Download from [desktop.github.com](https://desktop.github.com/download/). Run the installer and follow the instructions.
-
-### Sign in with GitHub Desktop
-
-When you launch GitHub Desktop for the first time, click **"Sign in to GitHub.com"** and log in with your GitHub account. This connects GitHub Desktop to your account so you can push and pull code.
 
 ### Install GitHub CLI
 
@@ -305,7 +316,6 @@ Open the terminal and run the following commands, one at a time. Make sure all o
 - [ ] `docker --version` shows a version number
 - [ ] VS Code or Antigravity launches without issues
 - [ ] `git --version` shows a version number
-- [ ] GitHub Desktop is installed and signed in to your GitHub account
 - [ ] `gh auth status` shows that you are logged in
 - [ ] Claude Desktop app is installed and signed in
 - [ ] `claude` starts in the terminal and is connected to your account

@@ -168,7 +168,7 @@ GitHub är tjänsten där vi lagrar och samarbetar kring kod.
 
 ### Skapa ett GitHub-konto
 
-Om du inte redan har ett, gå till [github.com](https://github.com/) och skapa ett konto. Du behöver ett **Team-abonnemang** (från 4 USD/mån) — kontakta din chef eller IT-avdelning om du behöver hjälp med detta.
+Om du inte redan har ett, gå till [github.com](https://github.com/pricing) och skapa ett konto. Du behöver ett **Team-abonnemang** (från 4 USD/mån) — kontakta din chef eller IT-avdelning om du behöver hjälp med detta.
 
 ### Installera GitHub CLI
 

@@ -168,7 +168,7 @@ GitHub is the service where we store and collaborate on code.
 
 ### Create a GitHub Account
 
-If you don't already have one, go to [github.com](https://github.com/) and create an account. You'll need a **Team subscription** (from $4/month) — contact your manager or IT department if you need help with this.
+If you don't already have one, go to [github.com](https://github.com/pricing) and create an account. You'll need a **Team subscription** (from $4/month) — contact your manager or IT department if you need help with this.
 
 ### Install GitHub CLI
 

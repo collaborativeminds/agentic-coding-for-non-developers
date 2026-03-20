@@ -41,6 +41,18 @@ We recommend **Windows Terminal** — Microsoft's modern terminal app. It comes 
 
 > **Tip:** Always run commands in **Windows Terminal** (or PowerShell), not in the older "Command Prompt" (cmd.exe).
 
+### How to start Windows Terminal
+
+There are several ways to open Windows Terminal:
+
+1. **Via the Start menu:** Click the Start button (the Windows icon in the bottom-left corner) and type `Terminal`. Click **Terminal** in the search results.
+2. **Via the keyboard:** Press `Win + R`, type `wt`, and press Enter.
+3. **Via right-click:** Right-click on the Desktop or inside a folder and select **Open in Terminal** (Windows 11).
+
+When Terminal starts, you'll see a window with a dark background and a blinking cursor — that's where you type commands.
+
+> **Tip:** You can pin Terminal to the taskbar by right-clicking the Terminal icon and selecting **Pin to taskbar**, so you can find it quickly next time.
+
 Throughout the rest of this document, "open the terminal" means launching Ghostty (macOS) or Windows Terminal (Windows).
 
 ---

@@ -317,6 +317,16 @@ brew link --force libpq
 winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jqlang.jq MikeFarah.yq Hashicorp.Terraform
 ```
 
+### Download PostgreSQL Docker image
+
+During the course we use PostgreSQL as our database via Docker. Run the following command to download the latest official PostgreSQL image in advance:
+
+```
+docker pull postgres
+```
+
+This downloads a pre-packaged database environment that Docker can start directly on your computer. The download may take a few minutes depending on your internet connection.
+
 ---
 
 ## Checklist

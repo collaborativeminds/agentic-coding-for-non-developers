@@ -328,6 +328,16 @@ Du bör se ett versionsnummer (t.ex. `Python 3.x.x`).
 
 > **Observera:** På Windows kan kommandot heta `python` istället för `python3`.
 
+### Ladda ner PostgreSQL Docker-image
+
+Under kursen använder vi PostgreSQL som databas via Docker. Kör följande kommando för att ladda ner den senaste officiella PostgreSQL-imagen i förväg:
+
+```
+docker pull postgres
+```
+
+Detta laddar ner en färdigpaketerad databasmiljö som Docker kan starta direkt på din dator. Nedladdningen kan ta några minuter beroende på din internetanslutning.
+
 ---
 
 ## Checklista

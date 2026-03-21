@@ -214,6 +214,8 @@ gh auth login
 
 Välj **GitHub.com**, följ instruktionerna i terminalen, och logga in via webbläsaren när du ombeds. När inloggningen är klar bör du se ett bekräftelsemeddelande i terminalen.
 
+> Viktigt att tänka på med Git: Var noga med att aldrig placera ett git-repo i en mapp synkas med en tjänst som iCloud, Dropbox eller OneDrive. Det kan leda till problem med versionshanteringen.
+
 ---
 
 ## 8. Claude Code
@@ -330,7 +332,7 @@ Du bör se ett versionsnummer (t.ex. `Python 3.x.x`).
 
 ### Ladda ner PostgreSQL Docker-image
 
-Under kursen använder vi PostgreSQL som databas via Docker. Kör följande kommando för att ladda ner den senaste officiella PostgreSQL-imagen i förväg:
+Under kursen använder vi PostgreSQL som databas via Docker. Kör följande kommando för att ladda ner den senaste officiella PostgreSQL-imagen i förväg (Kontrollera att Docker Desktop är igång innan du kör kommandot):
 
 ```
 docker pull postgres

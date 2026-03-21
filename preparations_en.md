@@ -214,6 +214,8 @@ gh auth login
 
 Select **GitHub.com**, follow the instructions in the terminal, and sign in via the browser when prompted. When the login is complete, you should see a confirmation message in the terminal.
 
+> Important to think about with Git: Be careful never to place a git repo in a folder synced with a service like iCloud, Dropbox, or OneDrive. This can lead to problems with version control.
+
 ---
 
 ## 8. Claude Code
@@ -319,7 +321,7 @@ winget install cURL.cURL MongoDB.Shell PostgreSQL.PostgreSQL dandavison.delta jq
 
 ### Download PostgreSQL Docker image
 
-During the course we use PostgreSQL as our database via Docker. Run the following command to download the latest official PostgreSQL image in advance:
+During the course we use PostgreSQL as our database via Docker. Run the following command to download the latest official PostgreSQL image in advance (Make sure Docker Desktop is running before running the command):
 
 ```
 docker pull postgres

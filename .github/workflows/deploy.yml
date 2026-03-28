@@ -42,7 +42,7 @@ jobs:
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>$title$</title>
-            <link rel="stylesheet" href="github-markdown.min.css">
+            <link rel="stylesheet" href="$if(css-path)$$css-path$$else$github-markdown.min.css$endif$">
             <style>
               body {
                 box-sizing: border-box;
@@ -80,6 +80,28 @@ jobs:
               -o "_site/${basename}.html"
 
             echo "Built: ${basename}.html"
+          done
+
+          # Convert exercises/*.md files
+          mkdir -p _site/exercises
+          for f in exercises/*.md; do
+            [ ! -f "$f" ] && continue
+
+            basename="$(basename "${f%.md}")"
+
+            # Rewrite internal .md links to .html
+            sed 's/(\([^)]*\)\.md)/(\1.html)/g' "$f" > /tmp/processed.md
+
+            # Extract title from first heading
+            title=$(grep -m1 '^#' "$f" | sed 's/^#\+ //')
+
+            pandoc /tmp/processed.md \
+              --template=/tmp/template.html \
+              --metadata title="$title" \
+              --variable css-path="../github-markdown.min.css" \
+              -o "_site/exercises/${basename}.html"
+
+            echo "Built: exercises/${basename}.html"
           done
 
           # course_agenda_sv is the index page

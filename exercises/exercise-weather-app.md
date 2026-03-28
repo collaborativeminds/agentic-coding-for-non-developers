@@ -29,7 +29,7 @@ gh repo create my-weather-app --public --clone
 cd my-weather-app
 ```
 
-Replace `my-weather-app` with whatever you want to call your project. The `--public` flag makes the repository public (required for free GitHub Pages hosting), and `--clone` automatically clones it into a new folder.
+Replace `my-weather-app` with whatever you want to call your project. The `--public` flag makes the repository public (required for free GitHub Pages hosting), and `--clone` automatically clones it into a new folder. Change this to `--private` if you have a paid GitHub account and want to keep the project hidden.
 
 > **First time using gh?**
 > If you haven't used the GitHub CLI before, you may need to authenticate first. Run `gh auth login` and follow the prompts. Choose "GitHub.com", then "HTTPS", and authenticate via your browser.
@@ -133,9 +133,9 @@ Once you submit the prompt, Claude will think for a moment and then present a de
 
 If there's anything you'd like to change, just type your feedback directly in the Claude Code prompt. For example:
 
-- *"I'd like the search bar to be centered on the page, not in the top nav"*
-- *"Use a different shade of blue"*
-- *"Make the header sticky so it stays visible when scrolling"*
+- _"I'd like the search bar to be centered on the page, not in the top nav"_
+- _"Use a different shade of blue"_
+- _"Make the header sticky so it stays visible when scrolling"_
 
 Claude will update the plan based on your feedback. You can go back and forth as many times as you want until you're happy.
 
@@ -284,6 +284,7 @@ git commit -m "Add dark mode and light mode toggle"
 > ```
 
 Test both features:
+
 - Reload the page — you should be asked to share your location
 - Search for a few cities, then check that they appear as recent searches
 - Click a recent search to verify it loads the weather
@@ -451,27 +452,35 @@ Want to keep going? Here are some more features to try. Each one is a chance to 
 ## Troubleshooting
 
 ### "Command not found" when running `node`, `gh`, or `claude`
+
 Close your terminal and open a new one. The terminal needs to reload its paths after installing new tools.
 
 ### The page is blank after `npm run dev`
+
 Check the terminal for error messages. If you see errors about missing modules, run `npm install` and try again.
 
 ### "Invalid API key" error when searching for a city
+
 New OpenWeatherMap API keys can take up to 2 hours to activate. Wait and try again. You can verify your key at [openweathermap.org/api_keys](https://home.openweathermap.org/api_keys).
 
 ### Weather data shows but the 5-day forecast doesn't work
+
 The OpenWeatherMap free tier has limitations. If the 5-day forecast endpoint returns errors, ask Claude Code: "The 5-day forecast API is returning an error. Can you check which endpoint we're using and switch to one that works with the free tier?"
 
 ### GitHub Pages deployment fails
+
 Go to the **Actions** tab on GitHub, click the failed run, and look for the red error step. Common issues:
+
 - **Pages not enabled:** Make sure you completed Step 19 (setting Source to GitHub Actions)
 - **Secret not set:** Make sure you completed Step 21 (setting the API key secret)
 - **Branch name mismatch:** If your default branch is `master` instead of `main`, tell Claude Code: "Update the deploy workflow to trigger on the master branch instead of main"
 
 ### The deployed site is blank but local dev works fine
+
 This usually means the base path is wrong. Tell Claude Code: "The deployed site on GitHub Pages is blank. Can you check that the base path in vite.config.ts matches my repository name?"
 
 ### The app worked before but now shows old content
+
 If you added PWA/Service Worker support, the old version may be cached. Open developer tools (F12), go to the **Application** tab, click **Service Workers**, and click **Unregister**. Then reload the page.
 
 ---
@@ -481,17 +490,21 @@ If you added PWA/Service Worker support, the old version may be cached. Open dev
 If you want to remove what you've created after the exercise:
 
 ### Delete the GitHub Pages site
+
 Go to your repository on GitHub → **Settings** → **Pages** → click **Unpublish** (if available), or simply delete the repository.
 
 ### Delete the repository
+
 ```bash
 gh repo delete my-weather-app --yes
 ```
 
 ### Revoke the API key
+
 Go to [openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) and delete the API key you created. This prevents anyone from using it if it was accidentally exposed.
 
 ### Remove the local folder
+
 ```bash
 cd ..
 rm -rf my-weather-app

@@ -54,10 +54,53 @@ jobs:
               @media (max-width: 767px) {
                 body { padding: 15px; }
               }
+              .code-block-wrapper {
+                position: relative;
+              }
+              .copy-btn {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                padding: 4px 8px;
+                font-size: 12px;
+                cursor: pointer;
+                background: #f6f8fa;
+                border: 1px solid #d1d9e0;
+                border-radius: 6px;
+                color: #1f2328;
+                opacity: 0;
+                transition: opacity 0.2s;
+              }
+              .code-block-wrapper:hover .copy-btn {
+                opacity: 1;
+              }
+              .copy-btn:hover {
+                background: #e8ebef;
+              }
             </style>
           </head>
           <body class="markdown-body">
           $body$
+          <script>
+            document.querySelectorAll('pre > code').forEach(function(codeEl) {
+              var wrapper = document.createElement('div');
+              wrapper.className = 'code-block-wrapper';
+              var pre = codeEl.parentElement;
+              pre.parentNode.insertBefore(wrapper, pre);
+              wrapper.appendChild(pre);
+
+              var btn = document.createElement('button');
+              btn.className = 'copy-btn';
+              btn.textContent = 'Copy';
+              btn.addEventListener('click', function() {
+                navigator.clipboard.writeText(codeEl.textContent).then(function() {
+                  btn.textContent = 'Copied!';
+                  setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+                });
+              });
+              wrapper.appendChild(btn);
+            });
+          </script>
           </body>
           </html>
           TEMPLATE

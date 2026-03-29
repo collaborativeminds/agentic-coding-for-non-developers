@@ -457,8 +457,9 @@ Copy this prompt to your markdown file to review it, then paste it into Claude C
 > - One user must never be able to see another user's projects, time
 >   entries, or invoices
 >
-> Add NEXTAUTH_SECRET and NEXTAUTH_URL to the .env and .env.example files.
-> Generate a random value for NEXTAUTH_SECRET.
+> Add NEXTAUTH_SECRET, NEXTAUTH_URL, and AUTH_TRUST_HOST to the .env and
+> .env.example files. Set AUTH_TRUST_HOST="true" so it works when running
+> behind Docker later. Generate a random value for NEXTAUTH_SECRET.
 > ```
 
 > **What is authentication?**
@@ -469,6 +470,9 @@ Copy this prompt to your markdown file to review it, then paste it into Claude C
 
 > **What is a session?**
 > After you log in, the server gives your browser a **session token** — think of it like a wristband at a concert. On every page you visit, the browser shows the wristband, and the server checks that it's valid. This way you don't have to type your password on every single page.
+>
+> **Why do we need AUTH_TRUST_HOST="true"?**
+> NextAuth v5 includes strict security checks. Later in the exercise, we will run the app inside a Docker container. Because Docker acts as a proxy, NextAuth might block requests if it doesn't trust the forwarded headers. Setting `AUTH_TRUST_HOST="true"` explicitly tells NextAuth to trust these requests so authentication works properly behind Docker.
 
 ### Step 22: Apply the Database Migration
 
@@ -710,6 +714,7 @@ Deploy the Next.js service from your GitHub repository:
     ```
   - `NEXTAUTH_SECRET` — a random string (at least 32 characters). Generate one with: `openssl rand -base64 32`
   - `NEXTAUTH_URL` — the public URL of your deployed app (the teacher will help you find this)
+  - `AUTH_TRUST_HOST` — set to `"true"` so NextAuth works correctly behind Sliplane's proxy
 
 ### Step 35: Verify the Deployment
 

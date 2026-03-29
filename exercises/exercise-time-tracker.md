@@ -856,20 +856,3 @@ docker compose down -v
 ```
 
 The `-v` flag removes the database volume and all stored data.
-
-### Delete the repository
-
-```bash
-gh repo delete my-time-tracker --yes
-```
-
-### Delete Sliplane resources (if deployed)
-
-Go to the Sliplane dashboard and delete your services and server.
-
-### Remove the local folder
-
-```bash
-cd ..
-rm -rf my-time-tracker
-```

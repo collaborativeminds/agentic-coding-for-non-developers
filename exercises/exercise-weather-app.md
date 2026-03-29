@@ -315,8 +315,8 @@ Copy this prompt to your markdown file to review it, then paste it into Claude C
 > 1. Geolocation: When the app loads for the first time, offer to detect the
 >    user's location and show their local weather automatically.
 >    - Use the browser's Geolocation API to get the user's coordinates.
->    - Use the OpenWeatherMap Reverse Geocoding API 
->      (https://openweathermap.org/api/geocoding-api?collection=other#reverse) 
+>    - Use the OpenWeatherMap Reverse Geocoding API
+>      (https://openweathermap.org/api/geocoding-api?collection=other#reverse)
 >      to convert those coordinates into a city name.
 >    - Show a friendly message if the user declines or if geolocation is not available.
 >
@@ -527,27 +527,14 @@ If you added PWA/Service Worker support, the old version may be cached. Open dev
 
 ---
 
-## Clean Up
+## Clean Up (optional)
 
 If you want to remove what you've created after the exercise:
 
-### Delete the GitHub Pages site
+### Delete the GitHub Pages site (optional)
 
 Go to your repository on GitHub → **Settings** → **Pages** → click **Unpublish** (if available), or simply delete the repository.
 
-### Delete the repository
-
-```bash
-gh repo delete my-weather-app --yes
-```
-
-### Revoke the API key
+### Revoke the API key (optional)
 
 Go to [openweathermap.org/api_keys](https://home.openweathermap.org/api_keys) and delete the API key you created. This prevents anyone from using it if it was accidentally exposed.
-
-### Remove the local folder
-
-```bash
-cd ..
-rm -rf my-weather-app
-```

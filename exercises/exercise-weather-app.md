@@ -4,6 +4,9 @@
 
 ---
 
+> **Tip: Copying code and commands**
+> Whenever you see a code block containing a prompt or a terminal command, hover your mouse over it and use the **Copy** button that appears in the top right corner. This is much faster and less error-prone than manually highlighting the text!
+
 ## Part 1: Set Up the Project Repository
 
 In this first part you will create a new GitHub repository for your weather app using the terminal. All commands in this exercise are run in the terminal — that's an important part of the learning!

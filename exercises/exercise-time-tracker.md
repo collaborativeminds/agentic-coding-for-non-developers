@@ -4,6 +4,9 @@
 
 ---
 
+> **Tip: Copying code and commands**
+> Whenever you see a code block containing a prompt or a terminal command, hover your mouse over it and use the **Copy** button that appears in the top right corner. This is much faster and less error-prone than manually highlighting the text!
+
 ## Part 1: Set Up the Project Repository
 
 In this exercise you will build a full-stack time tracking and invoicing application. Unlike the weather app (which ran entirely in the browser), this app has a **server** that stores data in a **database**. You will build it step by step — starting simple and adding complexity one layer at a time.

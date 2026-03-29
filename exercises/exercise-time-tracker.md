@@ -125,7 +125,7 @@ Claude will present a plan. Here's what to look for:
 If you want changes, type your feedback and Claude will update the plan.
 
 > **What is Next.js?**
-> In the weather app exercise you used **Vite + React** — a setup where the browser does most of the work. **Next.js** is a framework built on top of React that adds a server. This means your app can do things that browsers can't, like connecting to a database or keeping secrets safe. Next.js uses **file-based routing** — each file inside the `app/` folder automatically becomes a page at a matching URL.
+> In the weather app exercise you used **Vite + React** — a setup where the browser does most of the work. **[Next.js](https://nextjs.org)** is a framework built on top of React that adds a server. This means your app can do things that browsers can't, like connecting to a database or keeping secrets safe. Next.js uses **file-based routing** — each file inside the `app/` folder automatically becomes a page at a matching URL.
 
 ### Step 7: Accept the Plan and Build
 

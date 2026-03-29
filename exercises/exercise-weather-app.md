@@ -93,9 +93,20 @@ In Plan mode, Claude will analyze your request and produce a step-by-step implem
 
 We'll build the app step by step rather than all at once. This way you can test each piece as it's added, and if something goes wrong, you'll know exactly which part caused the issue. This is also how real software is built — one feature at a time.
 
-Copy and paste the following prompt into Claude Code:
+For this project, we are asking Claude to use a standard modern tech stack:
 
-> **PROMPT 1 — Copy this into Claude Code**
+- **[React](https://react.dev/)**: A popular library for building user interfaces out of reusable components.
+- **[Vite](https://vitejs.dev/)** _(pronounced "veet")_: A lightning-fast development server and build tool that instantly updates the browser when code changes.
+- **[TypeScript](https://www.typescriptlang.org/)**: A version of JavaScript that adds type checking, which helps catch errors before the code even runs.
+
+To prepare your first prompt, we recommend drafting it outside the terminal:
+
+1. Copy the prompt template below.
+2. Paste it into a new markdown or text file (preferably stored outside your project folder).
+3. Edit the placeholders (`[YOUR APP NAME]` and the design description) with your own preferences.
+4. Copy your customized prompt and paste it into Claude Code.
+
+> **PROMPT 1 — Edit before pasting into Claude Code**
 >
 > ```
 > Build a weather app called [YOUR APP NAME] using Vite + React + TypeScript.
@@ -117,8 +128,6 @@ Copy and paste the following prompt into Claude Code:
 > .env.*.local, node_modules/, dist/, .DS_Store, and IDE folders (.vscode/,
 > .idea/).
 > ```
-
-Replace `[YOUR APP NAME]` with the name you want for your app, and replace the design description with your own preferences.
 
 ### Step 8: Review the Plan
 
@@ -207,17 +216,32 @@ git commit -m "Set up project scaffold with search bar"
 
 ## Part 5: Add Weather Data
 
-### Step 13: Connect the OpenWeatherMap API
+### How OpenWeatherMap APIs Work Together
 
-Go back to the Claude Code terminal and paste the following prompt:
+Before we ask Claude to write the code, it helps to understand how we'll get the data. OpenWeatherMap requires a two-step process when searching for weather by a city name:
 
-> **PROMPT 2 — Copy this into Claude Code**
+1. **Direct Geocoding API:** First, we send the city name to the Geocoding API to get its corresponding geographic coordinates (latitude and longitude).
+2. **Current Weather Data API:** Then, we use those exact coordinates to fetch the actual weather conditions at that location.
+
+Why use this two-step process? OpenWeatherMap deprecated their old way of directly passing a city name to the weather endpoint. The Geocoding API is the modern, recommended approach because it prevents errors and ambiguities. Many cities around the world share the same name, and by converting the name to precise coordinates first, we guarantee we're getting the weather for the correct place.
+
+### Step 13: Connect the APIs
+
+As before, copy this prompt to your markdown file to review it, then paste it into the Claude Code terminal:
+
+> **PROMPT 2 — Review and then paste into Claude Code**
 >
 > ```
 > Connect the app to the OpenWeatherMap API for real weather data. The API key
 > is stored in the environment variable VITE_WEATHER_API_KEY (in the .env
 > file). Use import.meta.env.VITE_WEATHER_API_KEY to access it. Never
 > hard-code the API key.
+>
+> We need to use a two-step process to fetch the data:
+> 1. Use the Direct Geocoding API to convert the searched city name into
+>    coordinates (latitude and longitude).
+> 2. Use the Current Weather Data API with those coordinates to get the
+>    current weather, and the appropriate 5-day forecast API to get the forecast.
 >
 > When a user searches for a city:
 > - Display current temperature (in Celsius), weather condition, humidity,
@@ -248,7 +272,9 @@ git commit -m "Add weather data and 5-day forecast"
 
 ### Step 15: Add Dark Mode and Light Mode
 
-> **PROMPT 3 — Copy this into Claude Code**
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 3 — Review and then paste into Claude Code**
 >
 > ```
 > Add dark mode and light mode support:
@@ -269,14 +295,23 @@ git commit -m "Add dark mode and light mode toggle"
 
 ### Step 17: Add Geolocation and Recent Searches
 
-> **PROMPT 4 — Copy this into Claude Code**
+**Understanding Geolocation and City Names**
+When you use the browser's Geolocation API, it provides exact coordinates (latitude and longitude), which is perfect for fetching weather data. However, coordinates aren't very readable for users. To display the actual name of your current city (like "Stockholm" instead of "59.3293, 18.0686"), we must use OpenWeatherMap's **Reverse Geocoding API**. It does the opposite of the Direct Geocoding API we used earlier: it takes coordinates and returns the location name.
+
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 4 — Review and then paste into Claude Code**
 >
 > ```
 > Add two more features:
 >
 > 1. Geolocation: When the app loads for the first time, offer to detect the
->    user's location and show their local weather automatically. Show a
->    friendly message if the user declines or if geolocation is not available.
+>    user's location and show their local weather automatically.
+>    - Use the browser's Geolocation API to get the user's coordinates.
+>    - Use the OpenWeatherMap Reverse Geocoding API 
+>      (https://openweathermap.org/api/geocoding-api?collection=other#reverse) 
+>      to convert those coordinates into a city name.
+>    - Show a friendly message if the user declines or if geolocation is not available.
 >
 > 2. Recent searches: Save the last 5 searched cities to localStorage so they
 >    appear as quick-access buttons below the search bar. Clicking a recent
@@ -324,14 +359,14 @@ You need to configure your GitHub repository to use GitHub Actions for deploying
 
 ### Step 20: Create the Deployment Workflow
 
-Go back to the Claude Code terminal and paste the following prompt:
+Copy this prompt to your markdown file to review it, then paste it into the Claude Code terminal:
 
-> **PROMPT 5 — Copy this into Claude Code**
+> **PROMPT 5 — Review and then paste into Claude Code**
 >
 > ```
 > Create a GitHub Actions workflow file at .github/workflows/deploy.yml that:
 > - Triggers on push to the main branch
-> - Uses Node.js 20
+> - Uses Node.js 22
 > - Installs dependencies with npm ci
 > - Builds the Vite project with npm run build
 > - Deploys the dist/ folder to GitHub Pages using the official

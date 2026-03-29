@@ -26,28 +26,24 @@ Additional preparations for the exercises.
   - [Trafiklab](https://developer.trafiklab.se/)
 
 **09:15 – How Does an LLM Work?**
-We start by building a foundational understanding of how large language models (LLMs) actually work. You don't need to understand the mathematics — but you do need to understand the concepts in order to use the tools effectively — and because it's genuinely interesting.
 
 **Coffee Break**
 
 **10:30 – Fundamentals of Software Development**
-A crash course in the concepts you need to know in order to guide an AI coding agent in the right direction. No prior knowledge required.
 
-**11:00 – Exercise: Build a Weather App**
+**11:00 – Practical Exercise**
 
 **11:45 – Lunch**
 
 ### Afternoon
 
-**13:00 – Continuation of the Exercise: Build a Weather App**
+**13:00 – Claude Code — Your Tool for Agentic Coding**
 
-**13:30 – Claude Code — Your Tool for Agentic Coding**
-Now we get into the tool you'll be using. We walk through how Claude Code works and how to get the most out of it.
+**13:30 – Continuation of the Exercises**
 
 **Coffee Break**
 
-**15:00 – Build a Full-Stack Application**
-We build a simple time tracking and invoice generation application with Claude Code.
+**15:00 – More Exercises!**
 
 **17:00 – Closing**
 

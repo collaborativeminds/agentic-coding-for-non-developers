@@ -26,28 +26,24 @@ Ytterligare förberedelser inför övningarna.
   - [Trafiklab](https://developer.trafiklab.se/)
 
 **09:15 – Hur fungerar en LLM?**
-Vi börjar med att bygga en grundläggande förståelse för hur stora språkmodeller (LLM:er) faktiskt fungerar. Du behöver inte förstå matematiken — men du behöver förstå koncepten för att kunna använda verktygen effektivt - och för att det är kul.
 
 **Fika**
 
 **10:30 – Grunderna i systemutveckling**
-En snabbkurs i de begrepp du behöver känna till för att kunna styra en AI-kodagent på rätt sätt. Inga förkunskaper krävs.
 
-**11:00 – Övning: Bygg en väderapp**
+**11:00 – Praktisk övning**
 
 **11:45 – Lunch**
 
 ### Eftermiddag
 
-**13:00 – Fortsättning av övningen: Bygg en väderapp**
+**13:00 – Claude Code — ditt verktyg för agentic coding**
 
-**13:30 – Claude Code — ditt verktyg för agentic coding**
-Nu går vi in på verktyget du ska använda. Vi går igenom hur Claude Code fungerar och hur du får ut mest möjliga av det.
+**13:30 – Fortsättning av övningarna**
 
 **Fika**
 
-**15:00 – Bygg en fullstack-applikation**
-Vi bygger en enklare tidsrapportering och fakturagenerering med Claude Code.
+**15:00 – Mer övningar!**
 
 **17:00 – Avslutning**
 

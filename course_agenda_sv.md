@@ -17,6 +17,14 @@ Den här kursen riktar sig till dig som jobbar inom tech men inte har en bakgrun
 **09:00 – Välkomna och introduktion**
 Presentation av kursen, upplägget och förväntningar.
 
+Ytterligare förberedelser inför övningarna.
+
+- Kontrollera att Claude Code är installerat och fungerar.
+- Kontrollera att du har tillgång till GitHub och att du kan skapa en ny repository.
+- Skapa API-nycklar för de tjänster som ska användas i övningarna.
+  - [OpenWeatherMap](https://openweathermap.org/)
+  - [Trafiklab](https://developer.trafiklab.se/)
+
 **09:15 – Hur fungerar en LLM?**
 Vi börjar med att bygga en grundläggande förståelse för hur stora språkmodeller (LLM:er) faktiskt fungerar. Du behöver inte förstå matematiken — men du behöver förstå koncepten för att kunna använda verktygen effektivt - och för att det är kul.
 

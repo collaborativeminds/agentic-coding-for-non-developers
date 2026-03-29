@@ -17,6 +17,14 @@ This course is aimed at people who work in tech but don't have a background in s
 **09:00 – Welcome and Introduction**
 Introduction to the course, its structure, and expectations.
 
+Additional preparations for the exercises.
+
+- Verify that Claude Code is installed and working.
+- Verify that you have access to GitHub and can create a new repository.
+- Create API keys for the services that will be used in the exercises.
+  - [OpenWeatherMap](https://openweathermap.org/)
+  - [Trafiklab](https://developer.trafiklab.se/)
+
 **09:15 – How Does an LLM Work?**
 We start by building a foundational understanding of how large language models (LLMs) actually work. You don't need to understand the mathematics — but you do need to understand the concepts in order to use the tools effectively — and because it's genuinely interesting.
 

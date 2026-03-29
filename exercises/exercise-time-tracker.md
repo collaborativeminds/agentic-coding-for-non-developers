@@ -103,8 +103,13 @@ To prepare your first prompt, we recommend drafting it outside the terminal:
 > - [DESCRIBE YOUR PREFERRED THEME AND VISUAL STYLE HERE. For example:
 >   "A professional clean design with a blue/gray color palette" or
 >   "A warm modern design with orange accents and rounded corners"]
+> - Fully responsive design that works well on mobile, tablet, and desktop
 > - The sidebar should collapse to icons on mobile
+> - Ensure high accessibility compliance (WCAG) for all interactive elements
 > - Use shadcn/ui components for buttons, cards, tables, and badges
+>
+> Ensure the app has full unit test coverage and that all routes have
+> integration tests.
 >
 > Create a comprehensive .gitignore that includes: .env, .env.local,
 > .env.*.local, node_modules/, .next/, dist/, .DS_Store, and IDE folders
@@ -120,12 +125,16 @@ Claude will present a plan. Here's what to look for:
 - **Pages:** Does the plan mention all four pages (Dashboard, Projects, Time Entries, Invoices)?
 - **Navigation:** Does it describe a sidebar layout?
 - **Components:** Does it plan to use shadcn/ui?
+- **Testing:** Does it include a comprehensive plan for unit and integration testing?
 - **No database:** Make sure the plan does NOT set up a database or Docker — that comes later.
 
 If you want changes, type your feedback and Claude will update the plan.
 
 > **What is Next.js?**
 > In the weather app exercise you used **Vite + React** — a setup where the browser does most of the work. **[Next.js](https://nextjs.org)** is a framework built on top of React that adds a server. This means your app can do things that browsers can't, like connecting to a database or keeping secrets safe. Next.js uses **file-based routing** — each file inside the `app/` folder automatically becomes a page at a matching URL.
+>
+> **What is shadcn/ui?**
+> **[shadcn/ui](https://ui.shadcn.com)** is a popular collection of beautifully designed, accessible UI components. We use it instead of typical component libraries because it adds the component code directly into your project. This gives you full control to easily customize the design, while saving hours of building from scratch.
 
 ### Step 7: Accept the Plan and Build
 

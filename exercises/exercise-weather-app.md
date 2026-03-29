@@ -101,6 +101,7 @@ For this project, we are asking Claude to use a standard modern tech stack:
 - **[React](https://react.dev/)**: A popular library for building user interfaces out of reusable components.
 - **[Vite](https://vitejs.dev/)** _(pronounced "veet")_: A lightning-fast development server and build tool that instantly updates the browser when code changes.
 - **[TypeScript](https://www.typescriptlang.org/)**: A version of JavaScript that adds type checking, which helps catch errors before the code even runs.
+- **[shadcn/ui](https://ui.shadcn.com/)**: A collection of beautifully designed, accessible UI components. We use it instead of typical component libraries because it adds the component code directly into your project, giving you full control to customize the design while saving hours of building from scratch.
 
 To prepare your first prompt, we recommend drafting it outside the terminal:
 
@@ -112,7 +113,8 @@ To prepare your first prompt, we recommend drafting it outside the terminal:
 > **PROMPT 1 — Edit before pasting into Claude Code**
 >
 > ```
-> Build a weather app called [YOUR APP NAME] using Vite + React + TypeScript.
+> Build a weather app called [YOUR APP NAME] using Vite + React + TypeScript
+> and shadcn/ui components.
 >
 > The app should show a header with the app name and a search bar where users
 > can type a city name. For now, when someone searches, just display the city
@@ -126,6 +128,8 @@ To prepare your first prompt, we recommend drafting it outside the terminal:
 >   weather condition" or "A cozy warm design inspired by a weather journal
 >   with serif fonts"]
 > - Fully responsive design that works well on mobile, tablet, and desktop
+> - Ensure high accessibility compliance (WCAG) for all interactive elements
+> - Use shadcn/ui components for inputs, buttons, and cards
 >
 > Create a comprehensive .gitignore that includes: .env, .env.local,
 > .env.*.local, node_modules/, dist/, .DS_Store, and IDE folders (.vscode/,

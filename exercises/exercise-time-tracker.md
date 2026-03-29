@@ -69,9 +69,14 @@ Press **Shift+Tab** to cycle through modes. The modes cycle in this order: **Nor
 
 We'll build the app step by step. The first step is to create the basic structure — pages you can click through, but with fake placeholder data. No database, no login, no Docker yet.
 
-Copy and paste the following prompt into Claude Code:
+To prepare your first prompt, we recommend drafting it outside the terminal:
 
-> **PROMPT 1 — Copy this into Claude Code**
+1. Copy the prompt template below.
+2. Paste it into a new markdown or text file (preferably stored outside your project folder).
+3. Edit the placeholders (`[YOUR APP NAME]` and the design description) with your own preferences.
+4. Copy your customized prompt and paste it into Claude Code.
+
+> **PROMPT 1 — Edit before pasting into Claude Code**
 >
 > ```
 > Build a time tracking and invoicing app called [YOUR APP NAME] using
@@ -175,9 +180,9 @@ Now we'll replace the hardcoded placeholder data with actual functionality — c
 
 ### Step 10: Write the In-Memory Data Prompt
 
-Go back to Claude Code and paste:
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
 
-> **PROMPT 2 — Copy this into Claude Code**
+> **PROMPT 2 — Review and then paste into Claude Code**
 >
 > ```
 > Replace the hardcoded example data with a working in-memory data layer.
@@ -249,9 +254,9 @@ Make sure Docker Desktop is running before continuing. You should see the Docker
 
 ### Step 14: Write the Database Prompt
 
-Go back to Claude Code and paste:
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
 
-> **PROMPT 3 — Copy this into Claude Code**
+> **PROMPT 3 — Review and then paste into Claude Code**
 >
 > ```
 > Add a PostgreSQL database to the project using Docker and Prisma ORM.
@@ -360,7 +365,9 @@ The app works, but let's make it feel complete and professional before adding mo
 
 ### Step 18: Write the Polish Prompt
 
-> **PROMPT 4 — Copy this into Claude Code**
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 4 — Review and then paste into Claude Code**
 >
 > ```
 > Polish the time tracking and invoicing features:
@@ -410,7 +417,9 @@ Right now, anyone who opens the app can see and edit all the data. Let's add use
 
 ### Step 21: Write the Authentication Prompt
 
-> **PROMPT 5 — Copy this into Claude Code**
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 5 — Review and then paste into Claude Code**
 >
 > ```
 > Add user authentication with NextAuth.js v5 using a credentials provider
@@ -491,7 +500,9 @@ Invoices need to be sent to someone. Let's add a Client entity so invoices can s
 
 ### Step 25: Write the Clients Prompt
 
-> **PROMPT 6 — Copy this into Claude Code**
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 6 — Review and then paste into Claude Code**
 >
 > ```
 > Add a Client entity for managing who invoices are billed to.
@@ -551,7 +562,9 @@ So far, you've been running the Next.js app directly on your computer with `npm 
 
 ### Step 28: Write the Docker Prompt
 
-> **PROMPT 7 — Copy this into Claude Code**
+Copy this prompt to your markdown file to review it, then paste it into Claude Code:
+
+> **PROMPT 7 — Review and then paste into Claude Code**
 >
 > ```
 > Dockerize the entire application so both Next.js and PostgreSQL run in
@@ -753,52 +766,69 @@ Want to keep going? Each one is a chance to practice the prompt, plan, review, t
 ## Troubleshooting
 
 ### "Command not found" when running `node`, `gh`, `claude`, or `docker`
+
 Close your terminal and open a new one. The terminal needs to reload its paths after installing new tools.
 
 ### "Cannot connect to the Docker daemon"
+
 Docker Desktop is not running. Open Docker Desktop and wait for it to fully start (the whale icon should stop animating). Then try your command again.
 
 ### Port 3000 is already in use
+
 Another app is using port 3000. Find and stop it, or tell Claude Code: "Change the app to use port 3001 instead of 3000."
 
 ### Port 5432 is already in use
+
 Another PostgreSQL instance is running — possibly from another project. Run `docker compose down` in the other project folder first, or tell Claude Code to use a different port for PostgreSQL.
 
 ### Prisma migration fails
+
 The database might be in a bad state. Try:
+
 ```bash
 npx prisma migrate reset
 ```
+
 This deletes all data and recreates the tables. If that doesn't work:
+
 ```bash
 docker compose down -v
 docker compose up -d
 npx prisma migrate dev
 ```
+
 The `-v` flag removes the database volume (all data), giving you a fresh start.
 
 ### The page is blank or shows "Module not found"
+
 Run `npm install` to make sure all dependencies are present, then try `npm run dev` again.
 
 ### Data disappears after restarting the dev server (Part 4)
+
 This is expected! In-memory storage resets when the server restarts. This is exactly why you add a database in Part 5.
 
 ### Data disappears after `docker compose down -v`
+
 The `-v` flag deletes volumes, including your database data. Use `docker compose down` (without `-v`) to stop containers while keeping your data.
 
 ### Authentication redirect loop (page keeps reloading)
+
 The `NEXTAUTH_URL` in your `.env` file might not match the actual URL. Make sure it says `http://localhost:3000` for local development.
 
 ### "Invalid environment variable" or NextAuth errors
+
 Make sure your `.env` file has `NEXTAUTH_SECRET` set to a random string (at least 32 characters). You can generate one with:
+
 ```bash
 openssl rand -base64 32
 ```
 
 ### Docker build fails or runs out of memory
+
 Docker Desktop may need more memory. Open Docker Desktop → **Settings** → **Resources** and increase the memory limit to at least 4 GB.
 
 ### The deployed app shows "502 Bad Gateway"
+
 The app container might still be starting — wait 30 seconds and refresh. If it persists, check the service logs in the Sliplane dashboard for error messages.
 
 ---
@@ -808,20 +838,25 @@ The app container might still be starting — wait 30 seconds and refresh. If it
 If you want to remove what you've created after the exercise:
 
 ### Stop and remove Docker containers
+
 ```bash
 docker compose down -v
 ```
+
 The `-v` flag removes the database volume and all stored data.
 
 ### Delete the repository
+
 ```bash
 gh repo delete my-time-tracker --yes
 ```
 
 ### Delete Sliplane resources (if deployed)
+
 Go to the Sliplane dashboard and delete your services and server.
 
 ### Remove the local folder
+
 ```bash
 cd ..
 rm -rf my-time-tracker

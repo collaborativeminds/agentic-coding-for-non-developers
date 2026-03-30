@@ -29,7 +29,7 @@ Ytterligare förberedelser inför övningarna.
 
 **Fika**
 
-**10:30 – Grunderna i systemutveckling**
+**10:30 – Claude Code — ditt verktyg för agentic coding**
 
 **11:00 – [Praktisk övning](exercises/index.md)**
 
@@ -37,7 +37,7 @@ Ytterligare förberedelser inför övningarna.
 
 ### Eftermiddag
 
-**13:00 – Claude Code — ditt verktyg för agentic coding**
+**13:00 – Grunderna i systemutveckling**
 
 **13:30 – [Fortsättning av övningarna](exercises/index.md)**
 

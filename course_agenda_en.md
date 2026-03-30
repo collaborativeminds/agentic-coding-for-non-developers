@@ -29,7 +29,7 @@ Additional preparations for the exercises.
 
 **Coffee Break**
 
-**10:30 – Fundamentals of Software Development**
+**10:30 – Claude Code — Your Tool for Agentic Coding**
 
 **11:00 – [Practical Exercise](exercises/index.md)**
 
@@ -37,7 +37,7 @@ Additional preparations for the exercises.
 
 ### Afternoon
 
-**13:00 – Claude Code — Your Tool for Agentic Coding**
+**13:00 – Fundamentals of Software Development**
 
 **13:30 – [Continuation of the Exercises](exercises/index.md)**
 

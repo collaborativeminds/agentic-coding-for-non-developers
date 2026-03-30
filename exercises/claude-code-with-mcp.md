@@ -119,7 +119,7 @@ First, exit Claude Code by typing:
 Run the following command in your terminal to add the Chrome DevTools MCP server to Claude Code:
 
 ```bash
-claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
+claude claude mcp add chrome-devtools --scope project npx chrome-devtools-mcp@latest
 ```
 
 This tells Claude Code: "Add an MCP server called `chrome-devtools` and run it using this command." The server will be started automatically whenever Claude Code needs it.
